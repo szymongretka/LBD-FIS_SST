@@ -39,6 +39,7 @@ public class average_statistics extends HttpServlet {
 		return AverageMap;
 	}
    
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		

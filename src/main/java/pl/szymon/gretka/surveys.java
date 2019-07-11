@@ -4,21 +4,20 @@ import java.util.List;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-import javax.inject.Inject;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/surveys")
 public class surveys extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 	private Integer counter = 0;
 	
@@ -39,6 +38,8 @@ public class surveys extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		counter++;
 		PrintWriter out = response.getWriter();
+		
+		//HttpSession session = request.getSession(true);
 
 		ServletContext context = request.getServletContext();
 		List<SurveyAnswers> answers = (ArrayList) context.getAttribute("answers");
