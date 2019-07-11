@@ -1,4 +1,4 @@
-package pl.szymon.gretka;
+package pl.szymon.gretka.listeners;
 
 import java.util.Calendar;
 import java.util.logging.Logger;

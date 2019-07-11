@@ -1,4 +1,4 @@
-package pl.szymon.gretka;
+package pl.szymon.gretka.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,8 +16,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pl.szymon.gretka.entity.SurveyAnswers;
+
 @WebServlet("/average_statistics")
-public class average_statistics extends HttpServlet {
+public class AverageStatisticsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
      
 	Map<String, Double> AverageMap = new HashMap<>();
@@ -39,7 +41,6 @@ public class average_statistics extends HttpServlet {
 		return AverageMap;
 	}
    
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		

@@ -1,4 +1,4 @@
-package pl.szymon.gretka;
+package pl.szymon.gretka.filters;
 
 import java.io.IOException;
 import java.util.logging.Logger;

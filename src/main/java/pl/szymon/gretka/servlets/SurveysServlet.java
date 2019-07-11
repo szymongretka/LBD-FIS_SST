@@ -1,4 +1,4 @@
-package pl.szymon.gretka;
+package pl.szymon.gretka.servlets;
 
 import java.util.List;
 import java.io.IOException;
@@ -14,9 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import pl.szymon.gretka.entity.SurveyAnswers;
+
 
 @WebServlet("/surveys")
-public class surveys extends HttpServlet {
+public class SurveysServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	private Integer counter = 0;

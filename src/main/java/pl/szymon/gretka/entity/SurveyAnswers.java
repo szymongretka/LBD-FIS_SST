@@ -1,4 +1,4 @@
-package pl.szymon.gretka;
+package pl.szymon.gretka.entity;
 
 public class SurveyAnswers {
 	

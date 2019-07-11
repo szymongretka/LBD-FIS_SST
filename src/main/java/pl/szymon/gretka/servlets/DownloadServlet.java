@@ -1,4 +1,4 @@
-package pl.szymon.gretka;
+package pl.szymon.gretka.servlets;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
