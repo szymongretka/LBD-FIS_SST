@@ -17,7 +17,7 @@ public class SessionListener implements HttpSessionListener {
 	@Override
 	  public void sessionCreated(HttpSessionEvent event) {
 		
-	      log.info("=== Session Created ===");
+	      /*log.info("=== Session Created ===");
 	      HttpSession session = event.getSession();
 	      log.info("Session ID: " + session.getId());
 	      
@@ -26,11 +26,11 @@ public class SessionListener implements HttpSessionListener {
 	      c.setTimeInMillis(seconds);
 	      log.info("Current date and time: " + String.valueOf(c.getTime()));
 	      
-	      session.setMaxInactiveInterval(10);
+	      session.setMaxInactiveInterval(10);*/
 	  }
 
 	  @Override
 	  public void sessionDestroyed(HttpSessionEvent se) {
-	      log.info("=== Session Destroyed ===");
+	      //log.info("=== Session Destroyed ===");
 	  }
 }

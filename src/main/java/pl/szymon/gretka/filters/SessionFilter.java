@@ -37,19 +37,19 @@ public class SessionFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		
-		String sessionId = req.getSession().getId();
+		/*String sessionId = req.getSession().getId();
 		log.info("Session ID: " + sessionId);
 		log.info("Request Format: " + req.getHeader("Accept"));
 		log.info("Language: " + req.getHeader("Accept-Language").substring(0, 5));
 		
-		long startTime = System.nanoTime();
+		long startTime = System.nanoTime();*/
 		
 		chain.doFilter(request, response);
 		
-		long duration = (System.nanoTime() - startTime);
+		/*long duration = (System.nanoTime() - startTime);
 		
 		log.info("Response type: " + res.getHeader("Content-Type"));
 
-		log.info("Duration: " + String.valueOf(duration) + " ns");
+		log.info("Duration: " + String.valueOf(duration) + " ns");*/
 	}
 }

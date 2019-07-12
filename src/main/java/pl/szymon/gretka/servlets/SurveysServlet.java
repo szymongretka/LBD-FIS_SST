@@ -28,6 +28,7 @@ public class SurveysServlet extends HttpServlet {
 		super.init(config);
 		ServletContext context = config.getServletContext();
 		context.setAttribute("answers", new ArrayList<SurveyAnswers>());
+		
 	}
 	
 	
