@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import pl.szymon.gretka.entity.SurveyAnswers;
-import pl.szymon.gretka.services.Calculator;
-import pl.szymon.gretka.services.Median;
+import pl.szymon.gretka.services.interfaces.Calculator;
+import pl.szymon.gretka.services.qualifiers.Median;
 
 
 @WebServlet("/median-statistics")

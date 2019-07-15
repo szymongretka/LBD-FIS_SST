@@ -1,4 +1,4 @@
-package pl.szymon.gretka.services;
+package pl.szymon.gretka.services.qualifiers;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

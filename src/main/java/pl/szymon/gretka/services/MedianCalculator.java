@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import pl.szymon.gretka.entity.SurveyAnswers;
+import pl.szymon.gretka.services.interfaces.Calculator;
+import pl.szymon.gretka.services.qualifiers.Median;
 
 @Median
 public class MedianCalculator implements Calculator {

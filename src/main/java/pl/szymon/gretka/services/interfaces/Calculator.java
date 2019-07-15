@@ -1,4 +1,4 @@
-package pl.szymon.gretka.services;
+package pl.szymon.gretka.services.interfaces;
 
 import java.util.List;
 import java.util.Map;
