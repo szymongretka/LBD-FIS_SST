@@ -21,6 +21,14 @@ import pl.szymon.gretka.entity.SurveyAnswers;
 public class SurveysServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
+	private static final String UNIVERSITY_NAME = "universityName";
+	private static final String FIRST_NAME = "firstName";
+	private static final String LAST_NAME = "lastName";
+	private static final String STUDY_DEGREE = "studyDegree";
+	private static final String QUALITY = "quality";
+	private static final String CONTACT = "contact";
+	private static final String EXPERIENCE = "experience";
+	
 	private Integer counter = 0;
 	
 	@Override
@@ -48,21 +56,21 @@ public class SurveysServlet extends HttpServlet {
 		List<SurveyAnswers> answers = (ArrayList) context.getAttribute("answers");
 		
 		out.print("Thanks ");
-		out.print(request.getParameter("firstName") + " ");
-		out.print(request.getParameter("lastName"));
+		out.print(request.getParameter(FIRST_NAME) + " ");
+		out.print(request.getParameter(LAST_NAME));
 		out.println(" for participation in our university survey.");
 		out.println("Your answers: ");
-		out.println("University name: " + request.getParameter("universityName"));
-		out.println("Your study degree: " + request.getParameter("studyDegree"));
+		out.println("University name: " + request.getParameter(UNIVERSITY_NAME));
+		out.println("Your study degree: " + request.getParameter(STUDY_DEGREE));
 		out.println("List of answers with scoring for each question");
-		out.println("Quality of courses and teaching?" + request.getParameter("quality"));
-		out.println("Contact with teachers?" + request.getParameter("contact"));
-		out.println("Inclusion of work/practical experience?" + request.getParameter("experience"));
+		out.println("Quality of courses and teaching?" + request.getParameter(QUALITY));
+		out.println("Contact with teachers?" + request.getParameter(CONTACT));
+		out.println("Inclusion of work/practical experience?" + request.getParameter(EXPERIENCE));
 		out.println("Number of successful survey submission’s responses: " + counter);
 		
-		answers.add(new SurveyAnswers(request.getParameter("firstName"), request.getParameter("lastName"), request.getParameter("universityName"),
-				request.getParameter("studyDegree"), request.getParameter("quality"), request.getParameter("contact"), 
-				request.getParameter("experience")));
+		answers.add(new SurveyAnswers(request.getParameter(FIRST_NAME), request.getParameter(LAST_NAME), request.getParameter(UNIVERSITY_NAME),
+				request.getParameter(STUDY_DEGREE), request.getParameter(QUALITY), request.getParameter(CONTACT), 
+				request.getParameter(EXPERIENCE)));
 		
 		
 	}

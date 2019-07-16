@@ -24,7 +24,7 @@ import pl.szymon.gretka.services.qualifiers.Median;
 public class MedianStatisticsServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private Map<String, Double> MedianMap = new HashMap<>();
+	private Map<String, Double> medianMap = new HashMap<>();
 	
 	@Median
 	@Inject
@@ -36,11 +36,16 @@ public class MedianStatisticsServlet extends HttpServlet {
 		ServletContext context = request.getServletContext();
 		List<SurveyAnswers> listOfSurveys = (ArrayList) context.getAttribute("answers");
 		
-		MedianMap = calculator.calculate(listOfSurveys);
 		
-		out.println("Median results for universities:");
+		if(listOfSurveys != null) {
+			medianMap = calculator.calculate(listOfSurveys);
+			out.println("Median results for universities:");
+		} else {
+			out.println("There is no data to display");
+		}
 		
-		for (Map.Entry<String, Double> entry : MedianMap.entrySet()) {
+		
+		for (Map.Entry<String, Double> entry : medianMap.entrySet()) {
 			out.println("University name: " + entry.getKey() + " median: " + entry.getValue());
 		}
 		
