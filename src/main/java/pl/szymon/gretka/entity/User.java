@@ -1,6 +1,8 @@
 package pl.szymon.gretka.entity;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 
 import pl.szymon.gretka.enums.ROLES;
 
@@ -17,7 +19,7 @@ public class User {
 	String password;
 	String username;
 	
-	
+	public User() {};
 	
 
 	public User(String firstName, String lastName, ROLES role, String language, String sessionId, String adressIp, String password, String username) {

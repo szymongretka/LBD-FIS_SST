@@ -3,6 +3,7 @@ package pl.szymon.gretka.filters;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import javax.inject.Inject;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -15,11 +16,17 @@ import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pl.szymon.gretka.entity.User;
+import pl.szymon.gretka.services.DataInitializer;
+
 @WebFilter(filterName = "CredentialFilter",
 urlPatterns = { "/download" },
 initParams = { @WebInitParam(name = "", value = "")})
 public class CredentialFilter implements Filter {
 
+	@Inject
+    private User user; 
+	
 	private ServletContext context;
 	private Logger log = Logger.getLogger(getClass().getName());
 	
@@ -29,12 +36,20 @@ public class CredentialFilter implements Filter {
 	}
 	
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, 
+	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, 
 			FilterChain chain) throws IOException, ServletException {
 		
-		HttpServletRequest req = (HttpServletRequest) request;
-		HttpServletResponse res = (HttpServletResponse) response;
+		HttpServletRequest request = (HttpServletRequest) servletRequest;
+		HttpServletResponse response = (HttpServletResponse) servletResponse;
 
+		
+		System.out.println("CREDENTIAL FILTER: " + user.getLanguage());
+		System.out.println("CREDENTIAL FILTER: " + user.getRole());
+		
+		
+		
+		
+		
 		chain.doFilter(request, response);
 
 	}

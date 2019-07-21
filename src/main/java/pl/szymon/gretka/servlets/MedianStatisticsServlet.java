@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -17,7 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import pl.szymon.gretka.entity.SurveyAnswers;
 import pl.szymon.gretka.services.interfaces.Calculator;
+import pl.szymon.gretka.services.interfaces.NumberFormatter;
 import pl.szymon.gretka.services.qualifiers.Median;
+import pl.szymon.gretka.services.qualifiers.Number;
 
 
 @WebServlet("/median-statistics")
@@ -29,6 +32,10 @@ public class MedianStatisticsServlet extends HttpServlet {
 	@Median
 	@Inject
 	Calculator calculator;
+	
+	@Number
+	@Inject
+	NumberFormatter formatter;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -44,9 +51,12 @@ public class MedianStatisticsServlet extends HttpServlet {
 			out.println("There is no data to display");
 		}
 		
+		Locale currentLocale = request.getLocale();
+		
 		
 		for (Map.Entry<String, Double> entry : medianMap.entrySet()) {
-			out.println("University name: " + entry.getKey() + " median: " + entry.getValue());
+			out.println("University name: " + entry.getKey() + " median: " 
+					+ formatter.formatNumber(entry.getValue(), currentLocale));
 		}
 		
 		

@@ -2,9 +2,12 @@ package pl.szymon.gretka.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
@@ -19,8 +22,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import pl.szymon.gretka.entity.SurveyAnswers;
 import pl.szymon.gretka.services.interfaces.Calculator;
+import pl.szymon.gretka.services.interfaces.NumberFormatter;
 import pl.szymon.gretka.services.qualifiers.Average;
 import pl.szymon.gretka.services.qualifiers.Median;
+import pl.szymon.gretka.services.qualifiers.Number;
 
 @WebServlet("/average_statistics")
 public class AverageStatisticsServlet extends HttpServlet {
@@ -32,6 +37,10 @@ public class AverageStatisticsServlet extends HttpServlet {
 	@Average
 	@Inject
 	Calculator calculator;
+	
+	@Number
+	@Inject
+	NumberFormatter formatter;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
@@ -46,10 +55,11 @@ public class AverageStatisticsServlet extends HttpServlet {
 			out.println("There is no data to display<br>");
 		}
 
-		
+		Locale currentLocale = request.getLocale();
 		
 		for (Map.Entry<String, Double> entry : averageMap.entrySet()) {
-			out.println("<br>" + "University name: " + entry.getKey() + " average: " + entry.getValue());
+			out.println("<br>" + "University name: " + entry.getKey() + 
+					" average: " + formatter.formatNumber(entry.getValue(), currentLocale));
 		}
 		
 		response.setContentType("text/html charset=utf-8");

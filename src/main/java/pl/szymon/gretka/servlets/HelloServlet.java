@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,12 +15,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import pl.szymon.gretka.entity.User;
+
 
 @WebServlet("/hello")
 public class HelloServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	private Logger log = Logger.getLogger(getClass().getName());
+	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
@@ -35,7 +39,7 @@ public class HelloServlet extends HttpServlet {
 	          log.info("Session created in the servlet");
 
 	      }
-
+	     
 	      response.setContentType("text/html");
 		
 		Map<String, String> map = new HashMap<String, String>();

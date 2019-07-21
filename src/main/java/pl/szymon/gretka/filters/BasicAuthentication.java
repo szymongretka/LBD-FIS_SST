@@ -38,6 +38,9 @@ public class BasicAuthentication implements Filter {
     
     @Inject
     private DataInitializer dt;
+    
+    @Inject 
+    private User usr;
 
    
     private String realm = "Protected";
@@ -60,6 +63,8 @@ public class BasicAuthentication implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
        
         List<User> listOfUsers = dt.getListOfUsers();
+        
+        
 
         String authHeader = request.getHeader("Authorization");
         if (authHeader != null) {
@@ -90,10 +95,12 @@ public class BasicAuthentication implements Filter {
                                 if(user.getPassword().equals(passwordFromHeader)) {
                                 	ROLES userRole = user.getRole();
                                 	if(userRole == ROLES.ADMIN || userRole == ROLES.STATISTIC_MANAGER || userRole == ROLES.STATISTIC_VIEWER) {
+                                		usr.setLanguage(request.getHeader("Accept-Language").substring(0, 5));
                                 		user.setLanguage(request.getHeader("Accept-Language").substring(0, 5));
                                 		user.setSessionId(request.getSession().getId());
                                 		user.setAdressIp(request.getLocalAddr());
                                 		System.out.println(user.toString());
+                                		
                                 	} else {
                                 		unauthorized(response, "You don't have enough privilages to see this content");
                                 	}
